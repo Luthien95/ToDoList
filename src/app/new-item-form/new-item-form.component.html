@@ -1,0 +1,40 @@
+<form (submit)="addNewTask()" [formGroup]="newTaskForm" novalidate>
+  <div class="form-group">
+    <label
+      >title:
+      <input
+        name="title"
+        formControlName="title"
+        placeholder="title"
+        required
+      />
+    </label>
+  </div>
+  <div
+    *ngIf="
+      newTaskForm.controls['title'].invalid &&
+      (newTaskForm.controls['title'].dirty ||
+        newTaskForm.controls['title'].touched)
+    "
+    class="alert alert-danger"
+  >
+    <div *ngIf="newTaskForm.controls['title'].errors.required">
+      Title is required.
+    </div>
+  </div>
+  <label
+    >description:
+    <input
+      name="description"
+      formControlName="description"
+      placeholder="description"
+    />
+  </label>
+  <button
+    type="submit"
+    [disabled]="newTaskForm.pristine || newTaskForm.invalid"
+    class="btn btn-success"
+  >
+    Save
+  </button>
+</form>

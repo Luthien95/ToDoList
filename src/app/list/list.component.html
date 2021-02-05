@@ -1,0 +1,11 @@
+<div>
+  <ul class="list">
+    <app-list-item
+      *ngFor="let item of items"
+      [listItem]="item"
+      [removeTaskItemFromList]="removeTaskItemFromList"
+    ></app-list-item>
+  </ul>
+</div>
+<p>Add new element to list</p>
+<app-new-item-form [addTaskItemToList]="addTaskItemToList"></app-new-item-form>

@@ -1,0 +1,28 @@
+<li class="list-item">
+  <h1 class="list-item__header" *ngIf="!canEditCode">{{ listItem.title }}</h1>
+  <input
+    *ngIf="canEditCode"
+    [(ngModel)]="listItem.title"
+    type="text"
+    class="form-control"
+  />
+  <p class="list-item__description" *ngIf="!canEditCode">
+    {{ listItem.description }}
+  </p>
+  <textarea
+    *ngIf="canEditCode"
+    [(ngModel)]="listItem.description"
+    type="text"
+    class="form-control"
+  ></textarea>
+  <button *ngIf="canEditCode" (click)="saveEditedTask()">Save</button>
+  <button *ngIf="canEditCode" (click)="discardChanges()">Dismiss</button>
+  <button
+    class="pull-right text-success"
+    (click)="onCanEditCode()"
+    *ngIf="!canEditCode"
+  >
+    Edit
+  </button>
+  <button (click)="removeItem()" *ngIf="!canEditCode">Remove</button>
+</li>
